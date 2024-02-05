@@ -1,0 +1,1 @@
+ D:\\NIVISH_APP_TAB\\Nivish-Healthcamp-App-for-Tab\\nivish\\.dart_tool\\flutter_build\\c66415c74b62f06534a4f53e6011c7ce\\native_assets.yaml: 
