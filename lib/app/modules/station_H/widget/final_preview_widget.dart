@@ -22,7 +22,6 @@ class FinalHPreviewWidget extends GetView<StationHController> {
           child:
         heading(text: 'Upper Permanent'),
         ),
-        const SizedBox(height: Dimens.gapX2),
         Visibility(
           visible: StudentInfo.calculateAge() >= 2,
           child:
@@ -51,13 +50,11 @@ class FinalHPreviewWidget extends GetView<StationHController> {
             name: "Restoration Done",
             value: data.upperPermanentRestorationDoneValue),
         ),
-        const SizedBox(height: Dimens.gapX3),
         Visibility(
           visible: StudentInfo.calculateAge() <18,
           child:
         heading(text: 'Upper Deciduous'),
         ),
-        const SizedBox(height: Dimens.gapX2),
         Visibility(
           visible: StudentInfo.calculateAge() <18,
           child:
@@ -88,12 +85,10 @@ class FinalHPreviewWidget extends GetView<StationHController> {
             name: "Restoration Done",
             value: data.upperDeciduousRestorationDoneValue),
         ),
-        const SizedBox(height: Dimens.gapX3),
         Visibility(
           visible: StudentInfo.calculateAge() <18,child:
         heading(text: 'Lower Deciduous'),
         ),
-        const SizedBox(height: Dimens.gapX2),
         Visibility(
           visible: StudentInfo.calculateAge() <18,child:
         nameValueWidget(
@@ -119,12 +114,10 @@ class FinalHPreviewWidget extends GetView<StationHController> {
             name: "Restoration Done",
             value: data.lowerDeciduousRestorationDoneValue),
         ),
-        const SizedBox(height: Dimens.gapX3),
         Visibility(
           visible: StudentInfo.calculateAge() >= 2,child:
         heading(text: 'Lower Permanent'),
         ),
-        const SizedBox(height: Dimens.gapX2),
         Visibility(
           visible: StudentInfo.calculateAge() >= 2,child:
         nameValueWidget(

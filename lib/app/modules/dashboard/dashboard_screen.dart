@@ -88,10 +88,8 @@ class DashboardScreen extends GetView<DashboardController> {
                       children: [
                         Text('${AppStorage.getUser().fullName}',
                             style: AppStyles.tsBlackMedium16),
-                        const SizedBox(height: Dimens.gapX0_5),
                         const Text('Nivish Health Camp',
                             style: AppStyles.tsBlackRegular14),
-                        const SizedBox(height: Dimens.gapX1),
                         Visibility(
                           child: Text(
                               haveStationAccess
@@ -107,6 +105,7 @@ class DashboardScreen extends GetView<DashboardController> {
                                       ? AppColors.info
                                       : AppColors.error)),
                         ),
+                        Text("${AppStorage.getUser().niv}")
                       ],
                     )
                   ],

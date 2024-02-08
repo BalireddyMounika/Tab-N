@@ -13,6 +13,7 @@ class User {
     this.stations,
     this.token,
     this.uploadYourPhoto,
+    this.niv,
   });
 
   User.fromJson(dynamic json) {
@@ -32,6 +33,7 @@ class User {
     }
     token = json['Token'];
     uploadYourPhoto = json['Upload_Your_Photo'];
+    niv = json['NIV'];
   }
   int? id;
   dynamic provider;
@@ -44,6 +46,7 @@ class User {
   List<Stations>? stations;
   String? token;
   String? uploadYourPhoto;
+  String? niv;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -60,6 +63,7 @@ class User {
     }
     map['Token'] = token;
     map['Upload_Your_Photo'] = uploadYourPhoto;
+    map['NIV'] = niv;
     return map;
   }
 }

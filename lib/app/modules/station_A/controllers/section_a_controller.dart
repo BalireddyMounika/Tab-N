@@ -22,10 +22,9 @@ import '../widget/A_preview_model.dart';
 class StationAController extends BaseController<AllStationRepository> {
   Rx<StationAGetModel?> stationAResponse = Rx<StationAGetModel?>(null);
 
-Rx<TimeOfDay> time = Rx<TimeOfDay>(TimeOfDay.now());
-    String? entryTime ;
-bool isEntryTimeInitialized = false;
-
+  Rx<TimeOfDay> time = Rx<TimeOfDay>(TimeOfDay.now());
+  String? entryTime;
+  bool isEntryTimeInitialized = false;
 
   TextFieldWrapper heightWrapper = TextFieldWrapper();
   TextFieldWrapper lengthWrapper = TextFieldWrapper();
@@ -71,26 +70,29 @@ bool isEntryTimeInitialized = false;
 
   void onSaveAndNext() async {
     if (selectedTabIdx.value == 0 || selectedTabIdx.value == 1) {
-  if (!isEntryTimeInitialized) {
-    time.value = TimeOfDay.now();
-    entryTime =
-    '${time.value.hour}:${time.value.minute.toString().padLeft(2, '0')}';
-    isEntryTimeInitialized = true;
-    print('Entry Time: $entryTime');
-  }
-}
+      if (!isEntryTimeInitialized) {
+        time.value = TimeOfDay.now();
+        entryTime =
+            '${time.value.hour}:${time.value.minute.toString().padLeft(2, '0')}';
+        isEntryTimeInitialized = true;
+        print('Entry Time: $entryTime');
+      }
+    }
 
     switch (selectedTabIdx.value) {
       case 0:
         if (StudentInfo.calculateAge() >= 2) {
-          if (heightWrapper.controller.text.isNotEmpty ||
-              lengthWrapper.controller.text.isNotEmpty) {
+          if (heightWrapper.controller.text.isNotEmpty) {
             selectedTabIdx.value = 1;
           } else {
             AppUtils.showSnackBar('required');
           }
         } else {
-          selectedTabIdx.value = 1;
+          if (lengthWrapper.controller.text.isNotEmpty) {
+            selectedTabIdx.value = 1;
+          } else {
+            AppUtils.showSnackBar('required');
+          }
         }
 
         break;
@@ -126,7 +128,7 @@ bool isEntryTimeInitialized = false;
               selectedTabIdx.value = 6;
             }
           } else {
-            AppUtils.showSnackBar('required');
+            selectedTabIdx.value = 4;
           }
         }
         break;
@@ -292,9 +294,8 @@ bool isEntryTimeInitialized = false;
     try {
       LoadingUtils.showLoader();
 
-
       entryTime =
-      '${time.value.hour}:${time.value.minute.toString().padLeft(2, '0')}';
+          '${time.value.hour}:${time.value.minute.toString().padLeft(2, '0')}';
       isEntryTimeInitialized = true;
 
       StationARequest requestData = StationARequest(
@@ -340,7 +341,7 @@ bool isEntryTimeInitialized = false;
       if (response.data?.status == 200 || response.data?.status == 201) {
         await AppStorage.clearStudent();
 
-          entryTime;
+        entryTime;
 
         clearFormData();
         LoadingUtils.hideLoader();
@@ -355,8 +356,8 @@ bool isEntryTimeInitialized = false;
     } catch (e) {
       if (LoadingUtils.isLoaderShowing) LoadingUtils.hideLoader();
       print(e);
-    }finally{
-      entryTime="";
+    } finally {
+      entryTime = "";
     }
   }
 
@@ -423,10 +424,7 @@ bool isEntryTimeInitialized = false;
     headCircumference.controller.text = '';
     abdominalGirthWrapper.controller.text = '';
     tricepsSkinFoldWrapper.controller.text = '';
-   entryTime = "";
-
-
-
+    entryTime = "";
   }
 
   Future<bool> getStationADetails() async {

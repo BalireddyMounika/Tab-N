@@ -17,6 +17,7 @@ import 'package:nivish/app/modules/station_G/tabs/alimentary_&_urinary_system/su
 import 'package:nivish/app/modules/station_G/tabs/alimentary_&_urinary_system/umbilical_tab.dart';
 import 'package:nivish/app/modules/station_G/widget/common_container.dart';
 import 'package:nivish/app/themes/app_colors.dart';
+import 'package:nivish/widgets/Age_Gender_validations.dart';
 import 'package:nivish/widgets/common_check_box.dart';
 import 'package:nivish/widgets/text/common_text.dart';
 import 'package:nivish/widgets/toggle/two_option_selector_widget.dart';
@@ -35,8 +36,8 @@ class AlimentaryAndUrinaryTab extends GetView<AlimentaryAndUrinaryController> {
               Row(
                 children: [
                   subHeading(
-                      text: 'Alimentary & Urinary System',
-                      ),
+                    text: 'Alimentary & Urinary System',
+                  ),
                   Expanded(
                     child: Align(
                         alignment: Alignment.topRight,
@@ -48,15 +49,30 @@ class AlimentaryAndUrinaryTab extends GetView<AlimentaryAndUrinaryController> {
                 ],
               ),
               Dimens.heightGap2,
-              buildDoubleOptionSelector("Do you have Nausea/ Vomiting?", "No",
-                  "Yes", controller.isVomiting),
-              buildDoubleOptionSelector("Do you have pain in the Abdomen?",
-                  "No", "Yes", controller.isAbdomen),
-              buildDoubleOptionSelector(
-                  "Do you have Burning sensation when you pass Urine?",
-                  "No",
-                  "Yes",
-                  controller.isUrine),
+              Visibility(
+                visible: StudentInfo.calculateAge() > 2,
+                child: buildDoubleOptionSelector(
+                    "Do you have Nausea/ Vomiting?",
+                    "No",
+                    "Yes",
+                    controller.isVomiting),
+              ),
+              Visibility(
+                visible: StudentInfo.calculateAge() > 2,
+                child: buildDoubleOptionSelector(
+                    "Do you have pain in the Abdomen?",
+                    "No",
+                    "Yes",
+                    controller.isAbdomen),
+              ),
+              Visibility(
+                visible: StudentInfo.calculateAge() > 2,
+                child: buildDoubleOptionSelector(
+                    "Do you have Burning sensation when you pass Urine?",
+                    "No",
+                    "Yes",
+                    controller.isUrine),
+              ),
               commonCleft(
                   label: "Cleft Lip",
                   isNotVisibleCleftPresent:
@@ -150,7 +166,7 @@ class AlimentaryAndUrinaryTab extends GetView<AlimentaryAndUrinaryController> {
                   ).paddingSymmetric(horizontal: Dimens.gapX2),
                 ),
               ],
-            ).paddingOnly(top: Dimens.gapX2,left: Dimens.gapX2),
+            ).paddingOnly(top: Dimens.gapX2, left: Dimens.gapX2),
           ),
         ),
       ],

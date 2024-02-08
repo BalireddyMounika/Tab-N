@@ -51,7 +51,7 @@ class AppUtils {
     Get.rawSnackbar(
         snackPosition: SnackPosition.TOP,
         borderRadius: 20.0,
-        borderColor: AppColors.baseColor,
+        borderColor: AppColors.white,
         messageText: Text(
           text,
           style: AppStyles.tsBlackMedium18

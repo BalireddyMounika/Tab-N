@@ -125,7 +125,7 @@ class StationGController extends BaseController<AllStationRepository> {
                 'Please select exact values for Type Of Respiration - Abdominal ');
           }
           else
-          if(respiratorySystemController.selectedAdditionalTypeOfRespiration.contains('Abdominal')&&
+          if(respiratorySystemController.selectedAdditionalTypeOfRespiration.value =='Abdominal' &&
               respiratorySystemController. selectedTypeAbdominal.isNotEmpty
               && respiratorySystemController.selectedTypeAbdominal.contains('Other')
           && respiratorySystemController. otherTypeOfAbdominal.controller.text.isEmpty) {
@@ -139,7 +139,7 @@ class StationGController extends BaseController<AllStationRepository> {
                 'Please select exact values for Type Of Respiration - Thoracic ');
           }
           else
-          if(respiratorySystemController.selectedAdditionalTypeOfRespiration.contains('Thoracic')&&
+          if(respiratorySystemController.selectedAdditionalTypeOfRespiration.value =='Thoracic'&&
               respiratorySystemController. selectedTypeThoracic.isNotEmpty
               && respiratorySystemController.selectedTypeThoracic.contains('Other')
               && respiratorySystemController. otherTypeOfThoracic.controller.text.isEmpty) {
@@ -153,7 +153,7 @@ class StationGController extends BaseController<AllStationRepository> {
                 'Please select exact values for Type Of Respiration - Abdomino-Thoracic ');
           }
           else
-          if(respiratorySystemController.selectedAdditionalTypeOfRespiration.contains('Abdomino-Thoracic')&&
+          if(respiratorySystemController.selectedAdditionalTypeOfRespiration.value =='Abdomino-Thoracic'&&
               respiratorySystemController. selectedTypeAbdominio.isNotEmpty
               && respiratorySystemController.selectedTypeAbdominio.contains('Other')
               && respiratorySystemController. otherTypeOfAbdomino.controller.text.isEmpty) {
@@ -647,7 +647,7 @@ class StationGController extends BaseController<AllStationRepository> {
             AppUtils.showSnackBar(
                 'Please enter text for LMP Date');
           }
-          else///
+          else
           if(pubertalAssessmentGirlsController.isMenarche.value == false &&
               pubertalAssessmentGirlsController.isPain.value == false
               &&  pubertalAssessmentGirlsController.selectedPainYes.isEmpty)
@@ -658,11 +658,12 @@ class StationGController extends BaseController<AllStationRepository> {
           else
           if(pubertalAssessmentGirlsController.isMenarche.value == false &&
               pubertalAssessmentGirlsController.isPain.value == false
-              &&  pubertalAssessmentGirlsController.selectedPainYes.isNotEmpty
+              &&  pubertalAssessmentGirlsController.selectedPainYes.isNotEmpty&&
+              pubertalAssessmentGirlsController.selectedPainYes.contains('Other')
             && pubertalAssessmentGirlsController.otherPainYes.controller.text.isEmpty)
           {
             AppUtils.showSnackBar(
-                'Please enter text for  Pain in other body parts during menses - Other');
+                'Please enter text for Pain in other body parts during menses - Other');
           }
           else
 
@@ -820,7 +821,7 @@ class StationGController extends BaseController<AllStationRepository> {
           {
             AppUtils.showSnackBar(
                 'Please enter at least one name of medication');
-          }
+          }//Done
           else{
           await homcontroller.updateHistoryOfMedication(callBack: (success) {
             if (success ?? false) selectedTabIdx.value = 8;

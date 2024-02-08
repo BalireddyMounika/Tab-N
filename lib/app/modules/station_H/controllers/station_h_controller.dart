@@ -351,6 +351,26 @@ class StationHController extends BaseController<AllStationRepository> {
     selectedTabIdx.value = 0;
     //
     toothListsName.clear();
+    getSelectedTeethList(ToothType.UPRestoration).clear();
+    getSelectedTeethList(ToothType.UPFilled).clear();
+    getSelectedTeethList(ToothType.UPDecayed).clear();
+    getSelectedTeethList(ToothType.UPMissing).clear();
+    getSelectedTeethList(ToothType.UPProsthesis).clear();
+    getSelectedTeethList(ToothType.LPDecayed).clear();
+    getSelectedTeethList(ToothType.LPFilled).clear();
+    getSelectedTeethList(ToothType.LPMissing).clear();
+    getSelectedTeethList(ToothType.LPProsthesis).clear();
+    getSelectedTeethList(ToothType.LPRestoration).clear();
+    getSelectedTeethList(ToothType.UDDecayed).clear();
+    getSelectedTeethList(ToothType.UDFilled).clear();
+    getSelectedTeethList(ToothType.UDMissing).clear();
+    getSelectedTeethList(ToothType.UDProsthesis).clear();
+    getSelectedTeethList(ToothType.UDRestoration).clear();
+    getSelectedTeethList(ToothType.LDDecayed).clear();
+    getSelectedTeethList(ToothType.LDFilled).clear();
+    getSelectedTeethList(ToothType.LDMissing).clear();
+    getSelectedTeethList(ToothType.LDProsthesis).clear();
+    getSelectedTeethList(ToothType.LDRestoration).clear();
     //
     isSatisfactory.value = true;
     isPlaque.value = false;

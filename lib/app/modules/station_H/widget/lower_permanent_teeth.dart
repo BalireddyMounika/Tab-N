@@ -30,8 +30,18 @@ class LowerPermanentWidget extends GetView<StationHController> {
             selectedItemList:
                 controller.getSelectedTeethList(ToothType.LPMissing),
             onSelect: (value) {
-              controller.handelOnToothSelect(ToothType.LPMissing, value);
-            }),
+              RxList<String> decayedTeeth =
+              controller.getSelectedTeethList(ToothType.LPDecayed);
+              RxList<String> filledTeeth =
+              controller.getSelectedTeethList(ToothType.LPFilled);
+              RxList<String> restorationTeeth =
+              controller.getSelectedTeethList(ToothType.LPRestoration);
+              if (!(decayedTeeth.contains(value.toString()) &&
+                  filledTeeth.contains(value.toString()) &&
+                  restorationTeeth.contains(value.toString())) &&
+                  !(decayedTeeth.contains(value.toString()))) {
+                controller.handelOnToothSelect(ToothType.LPMissing, value);
+              }            }),
         const SizedBox(height: Dimens.gapX4),
         DigitToothPicker(
           toothType: ToothType.LPProsthesis,
@@ -41,8 +51,18 @@ class LowerPermanentWidget extends GetView<StationHController> {
           selectedItemList:
               controller.getSelectedTeethList(ToothType.LPProsthesis),
           onSelect: (value) {
-            controller.handelOnToothSelect(ToothType.LPProsthesis, value);
-          },
+            RxList<String> decayedTeeth =
+            controller.getSelectedTeethList(ToothType.LPDecayed);
+            RxList<String> filledTeeth =
+            controller.getSelectedTeethList(ToothType.LPFilled);
+            RxList<String> restorationTeeth =
+            controller.getSelectedTeethList(ToothType.LPRestoration);
+            if (!(decayedTeeth.contains(value.toString()) &&
+                filledTeeth.contains(value.toString()) &&
+                restorationTeeth.contains(value.toString())) &&
+                !(decayedTeeth.contains(value.toString()))) {
+              controller.handelOnToothSelect(ToothType.LPProsthesis, value);
+            }          },
         ),
         const SizedBox(height: Dimens.gapX4),
         DigitToothPicker(
@@ -52,8 +72,15 @@ class LowerPermanentWidget extends GetView<StationHController> {
           endValue: 17,
           selectedItemList: controller.getSelectedTeethList(ToothType.LPFilled),
           onSelect: (value) {
-            controller.handelOnToothSelect(ToothType.LPFilled, value);
-          },
+            RxList<String> missingTeeth =
+            controller.getSelectedTeethList(ToothType.LPMissing);
+            RxList<String> prosthesisTeeth =
+            controller.getSelectedTeethList(ToothType.LPProsthesis);
+            if (!(missingTeeth.contains(value.toString()) &&
+                prosthesisTeeth.contains(value.toString())) &&
+                !(missingTeeth.contains(value.toString()))) {
+              controller.handelOnToothSelect(ToothType.LPFilled, value);
+            }          },
         ),
         const SizedBox(height: Dimens.gapX4),
         DigitToothPicker(
@@ -64,8 +91,15 @@ class LowerPermanentWidget extends GetView<StationHController> {
           selectedItemList:
               controller.getSelectedTeethList(ToothType.LPDecayed),
           onSelect: (value) {
-            controller.handelOnToothSelect(ToothType.LPDecayed, value);
-          },
+            RxList<String> missingTeeth =
+            controller.getSelectedTeethList(ToothType.LPMissing);
+            RxList<String> prosthesisTeeth =
+            controller.getSelectedTeethList(ToothType.LPProsthesis);
+            if (!(missingTeeth.contains(value.toString()) &&
+                prosthesisTeeth.contains(value.toString())) &&
+                !(missingTeeth.contains(value.toString()))) {
+              controller.handelOnToothSelect(ToothType.LPDecayed, value);
+            }          },
         ),
         const SizedBox(height: Dimens.gapX4),
         DigitToothPicker(
@@ -76,8 +110,15 @@ class LowerPermanentWidget extends GetView<StationHController> {
           selectedItemList:
               controller.getSelectedTeethList(ToothType.LPRestoration),
           onSelect: (value) {
-            controller.handelOnToothSelect(ToothType.LPRestoration, value);
-          },
+            RxList<String> missingTeeth =
+            controller.getSelectedTeethList(ToothType.LPMissing);
+            RxList<String> prosthesisTeeth =
+            controller.getSelectedTeethList(ToothType.LPProsthesis);
+            if (!(missingTeeth.contains(value.toString()) &&
+                prosthesisTeeth.contains(value.toString())) &&
+                !(missingTeeth.contains(value.toString()))) {
+              controller.handelOnToothSelect(ToothType.LPRestoration, value);
+            }          },
         ),
       ],
     ));
